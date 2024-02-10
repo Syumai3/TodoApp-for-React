@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 export function AddTodo() {
+  const [newTodo, setNewTodo] = useState("");
   const handleAddChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    setNewTodo(e.target.value);
   };
 
   const handleAddNewTodo = () => {
@@ -11,9 +14,9 @@ export function AddTodo() {
     <>
       <input
         type="text"
-        value=""
+        value={newTodo}
         placeholder="Todoを追加"
-        onChange={handleAddChange}
+        onChange={(e) => handleAddChange(e)}
       />
       <button onClick={handleAddNewTodo}>追加</button>
     </>
