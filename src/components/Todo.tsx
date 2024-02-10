@@ -1,3 +1,7 @@
 export function Todo({ todo }) {
-  return <div>Todo</div>;
+  return (
+    <div>
+      <span>{todo.status}</span> <span>{todo.title}</span>
+    </div>
+  );
 }

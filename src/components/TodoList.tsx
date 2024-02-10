@@ -1,3 +1,5 @@
+import { Todo } from "./Todo";
+
 const mockTodos = [
   { id: 1, title: "牛乳を買う", status: "着手中" },
   { id: 2, title: "卵を買う", status: "完了" },
@@ -7,13 +9,7 @@ const mockTodos = [
 export function TodoList() {
   return (
     <div>
-      {mockTodos.map((todo) => {
-        return (
-          <div key={todo.id}>
-            <span>{todo.status}</span> <span>{todo.title}</span>
-          </div>
-        );
-      })}
+      {mockTodos.map((todo) => <Todo key={todo.id} todo={todo} />)}
     </div>
   );
 }
