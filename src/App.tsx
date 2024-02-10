@@ -1,10 +1,14 @@
 import "./App.css";
+import { AddTodo } from "./components/AddTodo";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
     <>
+      <h1>タスク管理</h1>
+      <AddTodo />
+      <TodoList />
       <div>
-        <h1>Vite + React</h1>
       </div>
     </>
   );
