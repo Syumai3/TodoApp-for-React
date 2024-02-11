@@ -10,7 +10,6 @@ export function Todo({ todo, onDelete, onChangeStatus }) {
         <option value="着手中">着手中</option>
         <option value="完了">完了</option>
       </select>
-
       <span style={todo.status === "完了" ? compleateStyle : {}}>
         {todo.title}
       </span>{" "}
