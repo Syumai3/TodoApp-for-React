@@ -7,8 +7,8 @@ import TodoList from "./components/TodoList";
 function App() {
   const [todos, setTodos] = useState([]);
 
+  // 新しいtodoを追加する
   const addTodoItem = (todoTitle) => {
-    // 新しいtodoを追加する
     const newTodo = {
       id: todos.length + 1,
       title: todoTitle,
@@ -16,6 +16,12 @@ function App() {
     };
     setTodos([...todos, newTodo]);
   };
+
+  // todoを削除する
+  const deleteTodoItem = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <>
       <h1>タスク管理</h1>
@@ -24,11 +30,11 @@ function App() {
         <Filterbar />
       </div>
       <div style={{ marginBottom: "10px" }}>
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onDelete={deleteTodoItem} />
       </div>
 
       <div>
-        残タスク数: 2
+        {todos.length > 0 ? `残タスク数:${todos.length}` : "タスクはありません"}
       </div>
     </>
   );
