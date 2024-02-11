@@ -12,7 +12,10 @@ export function AddTodo({ onAddTodo }: AddTodoProps) {
   };
 
   const handleAddNewTodo = () => {
-    onAddTodo(newTodo); // 親コンポーネントの addTodoItem 関数を呼び出して新しい Todo を追加
+    // 何も入力されていない場合は何も返さない
+    if (newTodo) {
+      onAddTodo(newTodo); // 親コンポーネントの addTodoItem 関数を呼び出して新しい Todo を追加
+    }
     setNewTodo(""); // 入力欄をクリア
   };
 
