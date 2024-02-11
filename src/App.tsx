@@ -3,13 +3,14 @@ import "./App.css";
 import { AddTodo } from "./components/AddTodo";
 import { Filterbar } from "./components/Filterbar";
 import TodoList from "./components/TodoList";
+import { Todo } from "./types/todoTypes";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [filters, setFilters] = useState([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const [filters, setFilters] = useState<string[]>([]);
 
   // 新しいtodoを追加する処理
-  const addTodoItem = (todoTitle) => {
+  const addTodoItem = (todoTitle: string): void => {
     const newTodo = {
       id: todos.length + 1,
       title: todoTitle,
@@ -19,12 +20,12 @@ function App() {
   };
 
   // todoを削除する処理
-  const deleteTodoItem = (id) => {
+  const deleteTodoItem = (id: number): void => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   // ステータスを変更する処理
-  const changeItemStatus = (id, newStatus) => {
+  const changeItemStatus = (id: number, newStatus: Todo["status"]): void => {
     const updateTodos = todos.map((todo) => {
       // 指定されたIDのTodoを見つけた場合、新しいステータスで更新
       if (todo.id === id) {
@@ -37,7 +38,10 @@ function App() {
   };
 
   // フィルターを適用する処理
-  const handleStatusChange = (status, isChecked) => {
+  const handleStatusChange = (
+    status: Todo["status"],
+    isChecked: boolean,
+  ): void => {
     if (isChecked) {
       // チェックされたら filters にチェックされた statusを追加 (filtersは初期値は空)
       setFilters([...filters, status]);

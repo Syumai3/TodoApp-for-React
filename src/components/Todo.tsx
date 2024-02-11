@@ -1,4 +1,12 @@
-export function Todo({ todo, onDelete, onChangeStatus }) {
+import { TodoType } from "../types/todoTypes";
+
+interface TodoProps {
+  todo: TodoType;
+  onDelete: () => void;
+  onChangeStatus: (id: number, newStatus: TodoType["status"]) => void;
+}
+
+export function Todo({ todo, onDelete, onChangeStatus }: TodoProps) {
   const compleateStyle = { textDecoration: "line-through" };
   return (
     <div>

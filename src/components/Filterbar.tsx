@@ -1,4 +1,10 @@
-export function Filterbar({ onStatusChange }) {
+import { TodoType } from "../types/todoTypes";
+
+interface FilterbarProps {
+  onStatusChange: (status: TodoType["status"], isChecked: boolean) => void;
+}
+
+export function Filterbar({ onStatusChange }: FilterbarProps) {
   return (
     <div
       style={{

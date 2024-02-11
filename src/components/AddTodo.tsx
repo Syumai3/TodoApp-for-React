@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-export function AddTodo({ onAddTodo }) {
+interface AddTodoProps {
+  onAddTodo: (todoTitle: string) => void;
+}
+
+export function AddTodo({ onAddTodo }: AddTodoProps) {
   const [newTodo, setNewTodo] = useState("");
 
   const handleAddChange = (e: React.ChangeEvent<HTMLInputElement>) => {
