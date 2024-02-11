@@ -1,6 +1,6 @@
 import { Todo } from "./Todo";
 
-export function TodoList({ todos, onDelete }) {
+export function TodoList({ todos, onDelete, onChangeStatus }) {
   return (
     <div>
       {todos.map((todo) => (
@@ -8,6 +8,7 @@ export function TodoList({ todos, onDelete }) {
           key={todo.id}
           todo={todo}
           onDelete={() => onDelete(todo.id)}
+          onChangeStatus={onChangeStatus}
         />
       ))}
     </div>

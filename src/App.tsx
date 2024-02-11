@@ -22,6 +22,19 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  // ステータスを変更する
+  const changeItemStatus = (id, newStatus) => {
+    const updateTodos = todos.map((todo) => {
+      // 指定されたIDのTodoを見つけた場合、新しいステータスで更新
+      if (todo.id === id) {
+        // スプレッド構文を使って新しいオブジェクトを作成し、statusプロパティを更新
+        return { ...todo, status: newStatus };
+      }
+      return todo;
+    });
+    setTodos(updateTodos); // 更新されたTodoリストで状態をセット
+  };
+
   return (
     <>
       <h1>タスク管理</h1>
@@ -30,7 +43,11 @@ function App() {
         <Filterbar />
       </div>
       <div style={{ marginBottom: "10px" }}>
-        <TodoList todos={todos} onDelete={deleteTodoItem} />
+        <TodoList
+          todos={todos}
+          onDelete={deleteTodoItem}
+          onChangeStatus={changeItemStatus}
+        />
       </div>
 
       <div>
