@@ -1,7 +1,4 @@
-export function Filterbar() {
-  const handleStatusChange = (e) => {
-    console.log("未着手のみ表示する");
-  };
+export function Filterbar({ onStatusChange }) {
   return (
     <div
       style={{
@@ -15,7 +12,7 @@ export function Filterbar() {
           type="checkbox"
           name="status"
           value="未着手"
-          onChange={(e) => handleStatusChange(e.target.checked)}
+          onChange={(e) => onStatusChange("未着手", e.target.checked)}
         />
         <span>未着手</span>
       </div>
@@ -24,7 +21,7 @@ export function Filterbar() {
           type="checkbox"
           name="status"
           value="着手中"
-          onChange={(e) => handleStatusChange(e.target.checked)}
+          onChange={(e) => onStatusChange("着手中", e.target.checked)}
         />
         <span>着手中</span>
       </div>
@@ -33,7 +30,7 @@ export function Filterbar() {
           type="checkbox"
           name="status"
           value="完了"
-          onChange={(e) => handleStatusChange(e.target.checked)}
+          onChange={(e) => onStatusChange("完了", e.target.checked)}
         />
         <span>完了</span>
       </div>
