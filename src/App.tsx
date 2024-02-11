@@ -3,15 +3,15 @@ import "./App.css";
 import { AddTodo } from "./components/AddTodo";
 import { Filterbar } from "./components/Filterbar";
 import TodoList from "./components/TodoList";
-import { Todo } from "./types/todoTypes";
+import { TodoType } from "./types/todoTypes";
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<TodoType[]>([]);
   const [filters, setFilters] = useState<string[]>([]);
 
   // 新しいtodoを追加する処理
   const addTodoItem = (todoTitle: string): void => {
-    const newTodo = {
+    const newTodo: TodoType = {
       id: todos.length + 1,
       title: todoTitle,
       status: "未着手",
@@ -25,7 +25,10 @@ function App() {
   };
 
   // ステータスを変更する処理
-  const changeItemStatus = (id: number, newStatus: Todo["status"]): void => {
+  const changeItemStatus = (
+    id: number,
+    newStatus: TodoType["status"],
+  ): void => {
     const updateTodos = todos.map((todo) => {
       // 指定されたIDのTodoを見つけた場合、新しいステータスで更新
       if (todo.id === id) {
@@ -39,7 +42,7 @@ function App() {
 
   // フィルターを適用する処理
   const handleStatusChange = (
-    status: Todo["status"],
+    status: TodoType["status"],
     isChecked: boolean,
   ): void => {
     if (isChecked) {

@@ -12,7 +12,8 @@ export function Todo({ todo, onDelete, onChangeStatus }: TodoProps) {
     <div>
       <select
         value={todo.status}
-        onChange={(e) => onChangeStatus(todo.id, e.target.value)}
+        onChange={(e) =>
+          onChangeStatus(todo.id, e.target.value as TodoType["status"])}
       >
         <option value="未着手">未着手</option>
         <option value="着手中">着手中</option>
