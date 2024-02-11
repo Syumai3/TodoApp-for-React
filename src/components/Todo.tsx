@@ -1,4 +1,5 @@
 export function Todo({ todo, onDelete, onChangeStatus }) {
+  const compleateStyle = { textDecoration: "line-through" };
   return (
     <div>
       <select
@@ -9,7 +10,11 @@ export function Todo({ todo, onDelete, onChangeStatus }) {
         <option value="着手中">着手中</option>
         <option value="完了">完了</option>
       </select>
-      <span>{todo.title}</span> <button onClick={onDelete}>削除</button>
+
+      <span style={todo.status === "完了" ? compleateStyle : {}}>
+        {todo.title}
+      </span>{" "}
+      <button onClick={onDelete}>削除</button>
     </div>
   );
 }
