@@ -34,6 +34,9 @@ export function Filterbar({ onStatusChange }) {
         />
         <span>完了</span>
       </div>
+      <div>
+        ←絞り込みたいステータスを選択してください
+      </div>
     </div>
   );
 }
