@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import { AddTodo } from "./components/AddTodo";
 import { Filterbar } from "./components/Filterbar";
 import TodoList from "./components/TodoList";
