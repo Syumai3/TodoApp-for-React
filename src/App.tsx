@@ -10,7 +10,6 @@ function App() {
   const [todos, setTodos] = useState<TodoType[]>([]);
   const [filters, setFilters] = useState<string[]>([]);
 
-  // TODO:ローカルストレージに値を保存する処理を実装する（現状動作しない）
   // マウント時にローカルストレージからTodoリストを読み込む
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem("todos") || "[]");
