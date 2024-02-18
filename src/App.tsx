@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AddTodo } from "./components/AddTodo";
 import { Filterbar } from "./components/Filterbar";
 import TodoList from "./components/TodoList";
@@ -9,6 +9,18 @@ import { TodoType } from "./types/todoTypes";
 function App() {
   const [todos, setTodos] = useState<TodoType[]>([]);
   const [filters, setFilters] = useState<string[]>([]);
+
+  // TODO:ローカルストレージに値を保存する処理を実装する（現状動作しない）
+  // マウント時にローカルストレージからTodoリストを読み込む
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem("todos") || "[]");
+    setTodos(storedTodos);
+  }, []);
+
+  // Todoリストが更新されるたびにローカルストレージに保存する
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   // 新しいtodoを追加する処理
   const addTodoItem = (todoTitle: string): void => {
