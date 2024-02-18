@@ -26,7 +26,7 @@ export function AddTodo({ onAddTodo }: AddTodoProps) {
         <input
           type="text"
           value={newTodo}
-          placeholder="Todoを追加"
+          placeholder="タスクを追加"
           onChange={handleAddChange}
           className={inputBar}
         />
