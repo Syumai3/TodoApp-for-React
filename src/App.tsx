@@ -2,6 +2,8 @@ import { useState } from "react";
 import { AddTodo } from "./components/AddTodo";
 import { Filterbar } from "./components/Filterbar";
 import TodoList from "./components/TodoList";
+import { filterbar } from "./css/FilterbarStyles.css";
+import { container } from "./css/styles.css";
 import { TodoType } from "./types/todoTypes";
 
 function App() {
@@ -59,21 +61,24 @@ function App() {
 
   return (
     <>
-      <h1>タスク管理</h1>
-      <div style={{ display: "flex", justifyContent: "flex-start" }}>
-        <AddTodo onAddTodo={addTodoItem} />
-        <Filterbar onStatusChange={handleStatusChange} />
-      </div>
-      <div style={{ marginBottom: "10px" }}>
-        <TodoList
-          todos={filteredTodos}
-          onDelete={deleteTodoItem}
-          onChangeStatus={changeItemStatus}
-        />
-      </div>
-
-      <div>
-        {todos.length > 0 ? `残タスク数:${todos.length}` : "タスクはありません"}
+      <div className={container}>
+        <h1>タスク管理</h1>
+        <div className={filterbar}>
+          <Filterbar onStatusChange={handleStatusChange} />
+          <AddTodo onAddTodo={addTodoItem} />
+        </div>
+        <div>
+          <TodoList
+            todos={filteredTodos}
+            onDelete={deleteTodoItem}
+            onChangeStatus={changeItemStatus}
+          />
+        </div>
+        <div>
+          {todos.length > 0
+            ? `残タスク数:${todos.length}`
+            : "タスクはありません"}
+        </div>
       </div>
     </>
   );

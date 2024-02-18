@@ -1,3 +1,5 @@
+import { buttonStyle } from "../css/styles.css";
+import { compleateStyle, selectBoxStyle } from "../css/todoStyle.css";
 import { TodoType } from "../types/todoTypes";
 
 interface TodoProps {
@@ -7,22 +9,22 @@ interface TodoProps {
 }
 
 export function Todo({ todo, onDelete, onChangeStatus }: TodoProps) {
-  const compleateStyle = { textDecoration: "line-through" };
   return (
     <div>
       <select
         value={todo.status}
         onChange={(e) =>
           onChangeStatus(todo.id, e.target.value as TodoType["status"])}
+        className={selectBoxStyle}
       >
         <option value="未着手">未着手</option>
         <option value="着手中">着手中</option>
         <option value="完了">完了</option>
       </select>
-      <span style={todo.status === "完了" ? compleateStyle : {}}>
+      <span className={todo.status === "完了" ? compleateStyle : ""}>
         {todo.title}
       </span>{" "}
-      <button onClick={onDelete}>削除</button>
+      <button onClick={onDelete} className={buttonStyle}>削除</button>
     </div>
   );
 }
