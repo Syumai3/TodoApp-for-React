@@ -1,11 +1,11 @@
 import { TodoType } from "../types/todoTypes";
 import { Todo } from "./Todo";
 
-interface TodoListProps {
+type TodoListProps = {
   todos: TodoType[];
   onDelete: (id: number) => void;
   onChangeStatus: (id: number, newStatus: TodoType["status"]) => void;
-}
+};
 
 export function TodoList({ todos, onDelete, onChangeStatus }: TodoListProps) {
   return (
