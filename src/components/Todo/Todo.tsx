@@ -1,6 +1,6 @@
-import { buttonStyle } from "../css/styles.css";
-import { compleateStyle, selectBoxStyle } from "../css/todoStyle.css";
-import { TODO_STATUS, type TodoType } from "../types/todoTypes";
+import { buttonStyle } from "../../css/styles.css";
+import { TODO_STATUS, type TodoType } from "../../types/todoTypes";
+import { compleateStyle, selectBoxStyle } from "./Todo.css";
 
 type TodoProps = {
   todo: TodoType;

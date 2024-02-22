@@ -10,14 +10,20 @@ export const filterItem = style({
   display: "flex",
   justifyContent: "flex-start",
   alignItems: "center",
-  fontSize: "14px",
+  fontSize: "0.75rem",
   ":hover": {
     cursor: "pointer",
   },
+  gap: "0.5rem",
 });
 
 export const checkbox = style({
   ":hover": {
     cursor: "pointer",
   },
+});
+
+export const filterCheckboxGroup = style({
+  display: "flex",
+  alignItems: "center",
 });

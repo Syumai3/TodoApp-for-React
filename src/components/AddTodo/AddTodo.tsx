@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { addButtonStyle, inputBar } from "../css/addTodoStyles.css";
+import { buttonStyle } from "../../css/styles.css";
+import { inputBar } from "./AddTodo.css";
 
 interface AddTodoProps {
   onAddTodo: (todoTitle: string) => void;
@@ -30,7 +31,7 @@ export function AddTodo({ onAddTodo }: AddTodoProps) {
           onChange={handleAddChange}
           className={inputBar}
         />
-        <button onClick={handleAddNewTodo} className={addButtonStyle}>
+        <button onClick={handleAddNewTodo} className={buttonStyle}>
           追加
         </button>
       </div>

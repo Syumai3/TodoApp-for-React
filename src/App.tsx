@@ -4,11 +4,12 @@ import {
   RouterProvider,
   useSearchParams,
 } from "react-router-dom";
-import { AddTodo } from "./components/AddTodo";
-import { Filterbar } from "./components/Filterbar";
+import { AddTodo } from "./components/AddTodo/AddTodo";
+import { Filterbar } from "./components/Filterbar/Filterbar";
 import TodoList from "./components/TodoList";
-import { filterbar } from "./css/FilterbarStyles.css";
-import { container } from "./css/styles.css";
+
+import { filterbar } from "./components/Filterbar/Filterbar.css";
+import { container, title } from "./css/styles.css";
 import { TODO_STATUS, TodoType } from "./types/todoTypes";
 
 const router = createBrowserRouter([
@@ -122,7 +123,7 @@ function TodoPage() {
   // フィルターを適用したTodoリストを作成する処理
 
   // http://xxx.com/?filter=未着手,完了
-  const filters = (searchParams.get("filter")?.split(",") || null) ?? [];
+  const filters = (searchParams.get("filter") || null)?.split(",") ?? [];
   const filteredTodos = todos.filter((todo) => {
     return filters.length === 0 || filters.includes(todo.status);
   });
@@ -130,7 +131,7 @@ function TodoPage() {
   return (
     <>
       <div className={container}>
-        <h1>タスク管理</h1>
+        <h1 className={title}>タスク管理</h1>
         <div className={filterbar}>
           <Filterbar onStatusChange={handleStatusChange} />
           <AddTodo onAddTodo={addTodoItem} />
