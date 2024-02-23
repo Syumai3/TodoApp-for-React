@@ -1,9 +1,9 @@
 import { TODO_STATUS, TodoType } from "../../types/todoTypes";
 import { checkbox, filterCheckboxGroup, filterItem } from "./Filterbar.css";
 
-interface FilterbarProps {
+type FilterbarProps = {
   onStatusChange: (status: TodoType["status"], isChecked: boolean) => void;
-}
+};
 
 export function Filterbar({ onStatusChange }: FilterbarProps) {
   return (

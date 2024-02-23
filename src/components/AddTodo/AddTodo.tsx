@@ -2,9 +2,9 @@ import { useState } from "react";
 import { buttonStyle } from "../../css/styles.css";
 import { inputBar } from "./AddTodo.css";
 
-interface AddTodoProps {
+type AddTodoProps = {
   onAddTodo: (todoTitle: string) => void;
-}
+};
 
 export function AddTodo({ onAddTodo }: AddTodoProps) {
   const [newTodo, setNewTodo] = useState("");
