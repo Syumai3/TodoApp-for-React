@@ -12,6 +12,7 @@ import { filterbar } from "./components/Filterbar/Filterbar.css";
 import { container, title } from "./css/styles.css";
 import { TODO_STATUS, TodoType } from "./types/todoTypes";
 
+// ルーティングの設定
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +24,7 @@ function App() {
   return <RouterProvider router={router} />;
 }
 
+// ローカルストレージからTodoリストを取得
 const storedTodos = JSON.parse(
   localStorage.getItem("todos") || "[]",
 ) as TodoType[];
@@ -75,7 +77,7 @@ function TodoPage() {
     status: TodoType["status"],
     isChecked: boolean,
   ): void => {
-    // チェックされたらフィルターに追加 (isCheckedがfalseの場合、statusと一致するものだけのクエリ文字列を作る)
+    // チェックされたらフィルターに追加 (isCheckedが true の場合、statusと一致するものだけのクエリ文字列を作る)
     if (isChecked) {
       // filter= の後の文字列を配列にして、重複を取り除いてから、新しいstatusを追加して、また文字列に戻す
       setSearchParams((prev) => {
@@ -88,6 +90,7 @@ function TodoPage() {
 
         // Set は重複を取り除いた「集合」を作る(配列ではない)
         const filterStatusSet = new Set(filterStatus);
+
         // filterStatusSet にチェックした status を追加
         filterStatusSet.add(status);
 
@@ -121,7 +124,6 @@ function TodoPage() {
     }
   };
   // フィルターを適用したTodoリストを作成する処理
-
   // http://xxx.com/?filter=未着手,完了
   const filters = (searchParams.get("filter") || null)?.split(",") ?? [];
   const filteredTodos = todos.filter((todo) => {
